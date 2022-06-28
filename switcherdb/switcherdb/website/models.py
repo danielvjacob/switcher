@@ -3,7 +3,6 @@ from django.db import models
 class User(models.Model):
     username = models.EmailField(max_length=200)
     password = models.CharField(max_length=200)
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     credit_num = models.IntegerField()
     expiration = models.IntegerField()
     cvc = models.IntegerField()

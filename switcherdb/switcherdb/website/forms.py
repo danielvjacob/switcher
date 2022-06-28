@@ -13,4 +13,4 @@ class BillingForm(forms.ModelForm):
     class Meta:
         #change from billing_info to user
         model = User
-        fields = ['user', 'credit_num', 'expiration', 'cvc', 'card_type']
+        fields = ['credit_num', 'expiration', 'cvc', 'card_type']
