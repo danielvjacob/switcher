@@ -3,4 +3,4 @@ from .models import Billing_info, User, Service
 
 admin.site.register(User)
 admin.site.register(Service)
-admin.site.register(Billing_info)
+

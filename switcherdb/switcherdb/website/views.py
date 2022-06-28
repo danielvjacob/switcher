@@ -2,7 +2,6 @@ from ast import AsyncFunctionDef
 from django.shortcuts import render
 from .models import User
 from .models import Service
-from .models import Billing_info
 from .forms import UserForm
 from .forms import BillingForm
 

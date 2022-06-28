@@ -1,6 +1,6 @@
 from django import forms
 from .models import User
-from .models import Billing_info
+
 
 #creating user form to be used in views.py
 class UserForm(forms.ModelForm):
@@ -11,5 +11,6 @@ class UserForm(forms.ModelForm):
 #creating billing form to be used in views.py
 class BillingForm(forms.ModelForm):
     class Meta:
-        model = Billing_info
+        #change from billing_info to user
+        model = User
         fields = ['user', 'credit_num', 'expiration', 'cvc', 'card_type']
