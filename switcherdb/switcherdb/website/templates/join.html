@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>Join Switcher Today!</h1>
+    <form method="POST" action="{% url 'join' %}">
+    {% csrf_token %}
+        <div class="form-group">
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email Address" name="username">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up!</button>
+      </form>
+{% endblock %}

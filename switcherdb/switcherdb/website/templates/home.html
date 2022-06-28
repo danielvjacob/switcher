@@ -1,5 +1,9 @@
-<h1>User Database</h1>
+{% extends 'base.html' %}
 
-{% for item in all %}
-<p>{{ item }}</p>
-{% endfor %}
+{% block content %}
+    <h1>User Database</h1>
+
+    {% for item in all %}
+    <p>{{ item }}</p>
+    {% endfor %}
+{% endblock %}
