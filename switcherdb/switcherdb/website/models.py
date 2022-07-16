@@ -1,7 +1,7 @@
 from django.db import models
-from multipage_form.models import MultipageModel
 
-class User(MultipageModel):
+
+class User(models.Model):
     username = models.EmailField(max_length=200, blank=True)
     password = models.CharField(max_length=200, blank=True)
     credit_num = models.IntegerField(default=0, blank=True)
