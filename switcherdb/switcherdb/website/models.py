@@ -15,6 +15,13 @@ class User(models.Model):
 class Service(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     company = models.CharField(max_length=200)
+    first_name = models.CharField(max_length=200, default="None", blank=True)
+    last_name = models.CharField(max_length=200, default="None", blank=True)
+    gender = models.CharField(max_length=200, default="None", blank=True)
+    birthday_month = models.IntegerField(default=1, blank=True)
+    birthday_day = models.IntegerField(default=1, blank=True)
+    birthday_year = models.IntegerField(default=2000, blank=True)
+    zipcode = models.IntegerField(default=00000, blank=True)
     cost = models.IntegerField()
 
     def __str__(self):
