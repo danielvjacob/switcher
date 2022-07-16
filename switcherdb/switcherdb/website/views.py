@@ -37,23 +37,83 @@ def bots(request):
 
 
     for e in Service.objects.all():
-        driver.get("https://www.peacocktv.com/freesignup")
-        time.sleep(1)
-        email_key = e.user.username
+        if e.company == "Peacock":
 
-        email = driver.find_element(By.XPATH, '//*[@id="email"]')
-        email.send_keys(email_key)
+            driver.get("https://www.peacocktv.com/freesignup")
+            time.sleep(1)
+            email_key = e.user.username
 
-        password_key = e.user.password
-        password = driver.find_element(By.XPATH, '//*[@id="password"]')
-        password.send_keys(password_key)
+            email = driver.find_element(By.XPATH, '//*[@id="email"]')
+            email.send_keys(email_key)
 
-        gender = "Man"
-        select = driver.find_element(By.XPATH, '//*[@id="gender"]')
-        Select(select).select_by_visible_text(gender)
+            password_key = e.user.password
+            password = driver.find_element(By.XPATH, '//*[@id="password"]')
+            password.send_keys(password_key)
 
-        time.sleep(3)
-        #driver.quit()
+            gender = "Man"
+            select = driver.find_element(By.XPATH, '//*[@id="gender"]')
+            Select(select).select_by_visible_text(gender)
+
+            time.sleep(3)
+        
+        if e.company == "Hulu":
+
+            driver.get("https://signup.hulu.com/plans")
+            time.sleep(1)
+
+            #click defualt plan and select button
+            select_button = driver.find_element(By.XPATH, '//*[@id="plan-1"]/div/div[2]/button')
+            select_button.click()
+            time.sleep(1)
+
+            email_key = e.user.username
+            email = driver.find_element(By.XPATH, '//*[@id="plan-1"]/div/div[1]')
+            email.send_keys(email_key)
+
+            password_key = e.user.password
+            password = driver.find_element(By.XPATH, '//*[@id="password"]')
+            password.send_keys(password_key)
+
+            name_key = e.first_name + " " + e.user.last_name
+            name = driver.find_element(By.XPATH, '//*[@id="firstName"]')
+            name.send_keys(name_key)
+            
+
+            
+            bday_Month_key = e.birthday_month
+            month = driver.find_element(By.XPATH, '//*[@id="root"]/div[1]/main/div[2]/div/form/div[2]/div[4]/div[2]/div/div/div')
+            Select(month).select_by_visible_text(bday_Month_key)
+
+            bday_Day_key = e.birthday_day
+            day = driver.find_element(By.XPATH, '//*[@id="root"]/div[1]/main/div[2]/div/form/div[2]/div[4]/div[3]/div/div/div')
+            Select(day).select_by_visible_text(bday_Day_key)
+
+            bday_Year_key = e.birthday_year
+            year = driver.find_element(By.XPATH, '//*[@id="root"]/div[1]/main/div[2]/div/form/div[2]/div[4]/div[4]/div/div/div')
+            Select(year).select_by_visible_text(bday_Year_key)
+
+
+            if e.gender == "Man":
+                gender = "Male"
+            elif e.gender == "Woman":
+                gender = "Female"
+            else:
+                gender = "Prefer not to say"
+            select = driver.find_element(By.XPATH, '//*[@id="root"]/div[1]/main/div[2]/div/form/div[2]/div[5]/div[2]/div/div/div')
+            Select(select).select_by_visible_text(gender)
+
+            
+
+
+
+
+
+
+
+
+
+
+        
     
     driver.quit()
 
