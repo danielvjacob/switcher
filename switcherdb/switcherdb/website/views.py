@@ -58,16 +58,19 @@ def bots(request):
         
         if e.company == "Hulu":
 
-            driver.get("https://signup.hulu.com/plans")
-            time.sleep(1)
-
+            driver.get("https://signup.hulu.com/account")
+            time.sleep(2)
+            
             #click defualt plan and select button
-            select_button = driver.find_element(By.XPATH, '//*[@id="plan-1"]/div/div[2]/button')
-            select_button.click()
-            time.sleep(1)
+            driver.find_element(By.XPATH, '//*[@id="plan-1"]/div/div[2]/button').click()
+            time.sleep(2)
+
+            select_button2 = driver.find_element(By, 'BUTTON')
+            select_button2.click()
+            time.sleep(2)
 
             email_key = e.user.username
-            email = driver.find_element(By.XPATH, '//*[@id="plan-1"]/div/div[1]')
+            email = driver.find_element(By.XPATH, '//*[@id="email"]')
             email.send_keys(email_key)
 
             password_key = e.user.password
@@ -101,6 +104,33 @@ def bots(request):
                 gender = "Prefer not to say"
             select = driver.find_element(By.XPATH, '//*[@id="root"]/div[1]/main/div[2]/div/form/div[2]/div[5]/div[2]/div/div/div')
             Select(select).select_by_visible_text(gender)
+        
+        if e.company == 'Netflix':
+            driver.get("https://www.netflix.com")
+            time.sleep(2)
+
+            email_key = e.user.username
+            email = driver.find_element(By.XPATH, '//*[@id="id_email_hero_fuji"]')
+            email.send_keys(email_key)
+            time.sleep(1)
+
+            #click from get started page to password page
+            driver.find_element(By.XPATH, '//*[@id="appMountPoint"]/div/div/div/div/div/div[2]/div[1]/div[2]/form/div/div/button/span[1]').click()
+            time.sleep(2)
+            #click 'Next' from 'Finish setting up your account'
+            driver.find_element(By.XPATH, '//*[@id="appMountPoint"]/div/div/div[2]/div/div[2]/button').click()
+            time.sleep(2)
+
+            password_key = e.user.password
+            password = driver.find_element(By.XPATH, '//*[@id="id_password"]')
+            password.send_keys(password_key)
+            driver.find_element(By.XPATH, '//*[@id="appMountPoint"]/div/div/div[2]/div/form/div/div[2]/button').click()
+            time.sleep(2)
+
+
+
+
+
 
             
 
